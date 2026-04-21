@@ -2,6 +2,7 @@
 
 import apiService from '@/src/lib/api';
 import { useState } from 'react';
+import { toast } from 'sonner';
 
 interface UploadFormProps {
   onSuccess: () => void;
@@ -30,8 +31,10 @@ export default function UploadForm({ onSuccess }: UploadFormProps) {
       setCategory('');
       setFile(null);
       onSuccess();
+      toast.success('Document uploaded successfully!');
     } catch (error) {
       console.error('Upload failed:', error);
+      toast.error('Failed to upload document. Please try again.');
     } finally {
       setUploading(false);
     }

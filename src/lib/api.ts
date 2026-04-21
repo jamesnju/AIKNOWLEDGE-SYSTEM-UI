@@ -53,13 +53,21 @@ class ApiService {
 
   // Auth endpoints
   async login(email: string, password: string): Promise<{ access_token: string; user_id: number }> {
-    // Changed to use request body instead of params
-    const response = await this.api.post('/users/login', { email, password });
-    if (response.data.access_token) {
-      this.setToken(response.data.access_token);
-    }
-    return response.data;
+  // Use query parameters instead of request body
+  const response = await this.api.post(`/users/login?email=${encodeURIComponent(email)}&password=${encodeURIComponent(password)}`);
+  if (response.data.access_token) {
+    this.setToken(response.data.access_token);
   }
+  return response.data;
+}
+  // async login(email: string, password: string): Promise<{ access_token: string; user_id: number }> {
+  //   // Changed to use request body instead of params
+  //   const response = await this.api.post('/users/login', { email, password });
+  //   if (response.data.access_token) {
+  //     this.setToken(response.data.access_token);
+  //   }
+  //   return response.data;
+  // }
 
   async register(userData: {
     staff_name: string;

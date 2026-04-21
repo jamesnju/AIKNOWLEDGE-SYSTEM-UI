@@ -15,7 +15,8 @@ interface Query {
 }
 
 export default function HistoryPage() {
-  const { userId } = useAuth();
+      const { user } = useAuth();
+  const userId = user?.id || null;
   const [queries, setQueries] = useState<Query[]>([]);
   const [loading, setLoading] = useState(true);
   const [expandedId, setExpandedId] = useState<number | null>(null);

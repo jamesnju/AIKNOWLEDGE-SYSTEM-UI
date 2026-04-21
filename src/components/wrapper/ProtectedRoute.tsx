@@ -1,4 +1,4 @@
-// components/ProtectedRoute.tsx
+// src/components/wrapper/ProtectedRoute.tsx
 'use client';
 
 import { useEffect } from 'react';
@@ -19,9 +19,8 @@ export default function ProtectedRoute({ children }: { children: React.ReactNode
     return (
       <div className="min-h-screen flex items-center justify-center">
         <div className="text-center">
-          <div className="spinner-border animate-spin inline-block w-8 h-8 border-4 rounded-full" role="status">
-            <span className="visually-hidden">Loading...</span>
-          </div>
+          <div className="inline-block animate-spin rounded-full h-8 w-8 border-b-2 border-blue-600"></div>
+          <p className="mt-2 text-gray-600">Loading...</p>
         </div>
       </div>
     );
