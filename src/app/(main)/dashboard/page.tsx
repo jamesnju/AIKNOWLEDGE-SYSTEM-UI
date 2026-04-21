@@ -3,6 +3,7 @@
 import QueryChart from '@/src/components/dashboard/QueryChart';
 import RecentQueries from '@/src/components/dashboard/RecentQueries';
 import StatsCards from '@/src/components/dashboard/StatsCards';
+import { useAuth } from '@/src/contexts/AuthContext';
 import apiService from '@/src/lib/api';
 import { useEffect, useState } from 'react';
 
@@ -10,6 +11,8 @@ export default function DashboardPage() {
   const [stats, setStats] = useState<any>(null);
   const [timeline, setTimeline] = useState<Record<string, number>>({});
   const [loading, setLoading] = useState(true);
+    const { user } = useAuth();
+
 
   useEffect(() => {
     const loadDashboard = async () => {
@@ -42,6 +45,8 @@ export default function DashboardPage() {
       <div>
         <h1 className="text-2xl font-bold text-gray-900 dark:text-white">Analytics Dashboard</h1>
         <p className="text-gray-600 dark:text-gray-400">Track AI performance and team efficiency</p>
+                <p>Welcome, {user?.staff_name}!</p>
+
       </div>
 
       <StatsCards stats={stats} />

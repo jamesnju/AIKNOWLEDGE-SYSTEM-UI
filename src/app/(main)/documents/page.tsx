@@ -7,7 +7,7 @@ import apiService from '@/src/lib/api';
 import { useEffect, useState } from 'react';
 
 export default function DocumentsPage() {
-  const { userId } = useAuth();
+  const  userId  = useAuth();
   const [documents, setDocuments] = useState<any[]>([]);
   const [loading, setLoading] = useState(true);
 
